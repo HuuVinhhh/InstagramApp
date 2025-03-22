@@ -1,147 +1,171 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:instagram_app/common/color_resource.dart';
+import 'package:instagram_app/common/font_resoure.dart';
+import 'package:instagram_app/components/buttons/link_button.dart';
+import 'package:instagram_app/components/buttons/rounded_button.dart';
+import 'package:instagram_app/components/buttons/texticon_button.dart';
+import 'package:instagram_app/components/textfields/rounded_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
-  final VoidCallback show;
-  const LoginScreen(this.show, {super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final email = TextEditingController();
-  FocusNode email_F = FocusNode();
-  final password = TextEditingController();
-  FocusNode password_F = FocusNode();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final _media = MediaQuery.sizeOf(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: RQColor.metaWhite,
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(
-              width: 96,
-              height: 100,
-            ),
-            Center(
-              child: Image.asset('images/logo.jpg'),
-            ),
-            SizedBox(
-              height: 120,
-            ),
-            Textfield(email, Icons.email, 'Email', email_F),
-            SizedBox(
-              height: 15,
-            ),
-            Textfield(password, Icons.lock, 'Password', password_F),
-            SizedBox(
-              height: 10,
-            ),
-            Forgot(),
-            SizedBox(
-              height: 10,
-            ),
-            Login(),
-            SizedBox(
-              height: 10,
-            ),
-            Have(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget Have() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            "Don't have account? ",
-            style: TextStyle(
-              fontSize: 13,
-              color: Colors.grey,
-            ),
-          ),
-          GestureDetector(
-            onTap: widget.show,
-            child: Text(
-              "Sign up ",
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.blue,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget Login() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Container(
-        alignment: Alignment.center,
-        width: double.infinity,
-        height: 44,
-        decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Text(
-          'Log in',
-          style: TextStyle(
-            fontSize: 23,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget Forgot() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Text(
-        'Forgot your password?',
-        style: TextStyle(
-          fontSize: 13,
-          color: Colors.blue,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  Widget Textfield(TextEditingController controller, IconData icon, String type,
-      FocusNode focusNode) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Container(
-        height: 44,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: TextField(
-          style: TextStyle(fontSize: 18, color: Colors.black),
-          controller: controller,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-            hintText: type,
-            prefixIcon: Icon(
-              icon,
-              color: focusNode.hasFocus ? Colors.black : Colors.grey,
-            ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: BorderSide(color: Colors.black, width: 2),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                const SizedBox(
+                  width: 96,
+                  height: 180,
+                ),
+                Center(
+                  child: SvgPicture.asset('assets/icons/logo/logo.svg'),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                RoundedTextfield(
+                    controller: _emailController,
+                    label: 'Email',
+                    bgColor: RQColor.metaGrey,
+                    borderColor: RQColor.metaBlack10,
+                    textColor: RQColor.metaBlack),
+                const SizedBox(
+                  height: 10,
+                ),
+                RoundedTextfield(
+                  controller: _passwordController,
+                  label: 'Password',
+                  bgColor: RQColor.metaGrey,
+                  borderColor: RQColor.metaBlack10,
+                  textColor: RQColor.metaBlack,
+                  obscureText: true,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      LinkButton(
+                        label: 'Forgot password?',
+                        onPressed: () {
+                          print('pw forgot');
+                        },
+                        textColor: RQColor.metaBlue,
+                        fontSize: RQFont.fs12,
+                        fontWeight: RQFont.fw400,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                RoundedButton(
+                  label: 'Log in',
+                  onPressed: () {
+                    print('log-in');
+                  },
+                  bgColor: RQColor.metaBlue,
+                  textColor: RQColor.metaWhite,
+                  fontSize: RQFont.fs13,
+                  fontWeight: RQFont.fw500,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TexticonButton(
+                  label: 'Log in with Facebook',
+                  onPressed: () {
+                    print('fb login');
+                  },
+                  iconAsset: 'assets/icons/logo/facebook.svg',
+                  textColor: RQColor.metaBlue,
+                  fontSize: RQFont.fs12,
+                  fontWeight: RQFont.fw400,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  width: double.maxFinite,
+                  height: 44,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: _media.width / 3,
+                        height: 1,
+                        child: Container(
+                          decoration: BoxDecoration(color: RQColor.metaBlack20),
+                        ),
+                      ),
+                      Text(
+                        'OR',
+                        style: TextStyle(
+                            color: RQColor.metaBlack40,
+                            fontSize: RQFont.fs13,
+                            fontWeight: RQFont.fw500),
+                      ),
+                      SizedBox(
+                        width: _media.width / 3,
+                        height: 1,
+                        child: Container(
+                          decoration: BoxDecoration(color: RQColor.metaBlack20),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account?",
+                        style: TextStyle(
+                            color: RQColor.metaBlack40,
+                            fontSize: RQFont.fs13,
+                            fontWeight: RQFont.fw400),
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      LinkButton(
+                          label: 'Sign up',
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/sign-up');
+                          },
+                          textColor: RQColor.metaBlue,
+                          fontSize: RQFont.fs13,
+                          fontWeight: RQFont.fw400)
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         ),
