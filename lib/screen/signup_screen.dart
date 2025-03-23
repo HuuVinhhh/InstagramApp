@@ -15,6 +15,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _passwordConfirmController = TextEditingController();
   @override
@@ -41,6 +42,15 @@ class _SignupScreenState extends State<SignupScreen> {
               RoundedTextfield(
                   controller: _emailController,
                   label: 'Email',
+                  bgColor: RQColor.metaGrey,
+                  borderColor: RQColor.metaBlack10,
+                  textColor: RQColor.metaBlack),
+              const SizedBox(
+                height: 10,
+              ),
+              RoundedTextfield(
+                  controller: _usernameController,
+                  label: 'Username',
                   bgColor: RQColor.metaGrey,
                   borderColor: RQColor.metaBlack10,
                   textColor: RQColor.metaBlack),

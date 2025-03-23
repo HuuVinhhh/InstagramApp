@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.16
+  photo_manager: ^3.6.4
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +66,9 @@ flutter:
     - assets/icons/reactions/
     - assets/icons/appbar/
     - assets/icons/avatar/
+    - assets/icons/profile/
     - assets/images/posts/
+    - assets/images/stories/
     - assets/images/avatars/
     - images/logo.jpg
     - images/person.png

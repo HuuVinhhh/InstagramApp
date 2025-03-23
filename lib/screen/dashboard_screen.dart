@@ -121,7 +121,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      print('add post');
+                      Navigator.pushNamed(context, '/create');
                     },
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 13),

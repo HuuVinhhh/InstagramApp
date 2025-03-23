@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_app/common/color_resource.dart';
-import 'package:instagram_app/common/font_resoure.dart';
 import 'package:instagram_app/components/posts/post_item.dart';
 import 'package:instagram_app/objects/post.dart';
 
