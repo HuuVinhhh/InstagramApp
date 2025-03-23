@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_app/screen/dashboard_screen.dart';
 import 'package:instagram_app/screen/login_screen.dart';
 import 'package:instagram_app/screen/signup_screen.dart';
 
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginScreen(),
-        '/sign-up': (context) => const SignupScreen()
+        '/': (context) => const DashboardScreen(),
+        '/sign-up': (context) => const SignupScreen(),
+        '/dashboard': (context) => const DashboardScreen()
       },
     );
   }

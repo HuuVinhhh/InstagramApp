@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class RQColor {
   static Color get metaGrey => const Color.fromRGBO(0xfa, 0xfa, 0xfa, 1.0);
+  static Color get metaGrey01 => const Color.fromRGBO(0xfa, 0xfa, 0xfa, 0.01);
   static Color get metaBlack10 => const Color.fromRGBO(0x00, 0x00, 0x00, 0.1);
   static Color get metaBlack20 => const Color.fromRGBO(0x00, 0x00, 0x00, 0.2);
   static Color get metaBlack40 => const Color.fromRGBO(0x00, 0x00, 0x00, 0.4);
