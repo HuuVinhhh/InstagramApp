@@ -16,7 +16,7 @@ class PostHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 375,
+      width: double.maxFinite,
       height: 54,
       color: RQColor.metaWhite,
       child: Center(

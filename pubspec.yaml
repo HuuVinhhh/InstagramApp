@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.16
   photo_manager: ^3.6.4
+  flutter_staggered_grid_view: ^0.7.0
+  video_player: ^2.9.3
 
 dev_dependencies:
   flutter_test:
@@ -66,21 +68,13 @@ flutter:
     - assets/icons/reactions/
     - assets/icons/appbar/
     - assets/icons/avatar/
+    - assets/icons/settings/
     - assets/icons/profile/
+    - assets/icons/reels/
     - assets/images/posts/
     - assets/images/stories/
     - assets/images/avatars/
-    - images/logo.jpg
-    - images/person.png
-    - images/camera.jpg
-    - images/comment.webp
-    - images/instagram-reels-icon.png
-    - images/instagram.jpg
-    - images/post.jpg
-    - images/save.png
-    - images/send.jpg
-    - images/send.png
-  #   - images/a_dot_ham.jpeg
+    - assets/images/profile/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

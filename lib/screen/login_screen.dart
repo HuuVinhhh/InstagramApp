@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_app/common/color_resource.dart';
@@ -19,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final _media = MediaQuery.sizeOf(context);
+    final media = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: RQColor.metaWhite,
       body: SafeArea(
@@ -82,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 RoundedButton(
                   label: 'Log in',
                   onPressed: () {
-                    print('log-in');
+                    Navigator.pushNamed(context, '/dashboard');
                   },
                   bgColor: RQColor.metaBlue,
                   textColor: RQColor.metaWhite,
@@ -113,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: _media.width / 3,
+                        width: media.width / 3,
                         height: 1,
                         child: Container(
                           decoration: BoxDecoration(color: RQColor.metaBlack20),
@@ -127,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: RQFont.fw500),
                       ),
                       SizedBox(
-                        width: _media.width / 3,
+                        width: media.width / 3,
                         height: 1,
                         child: Container(
                           decoration: BoxDecoration(color: RQColor.metaBlack20),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_app/components/posts/post_bottom.dart';
 import 'package:instagram_app/components/posts/post_header.dart';
 import 'package:instagram_app/components/posts/post_slider.dart';
-import 'package:instagram_app/objects/post.dart';
+import 'package:instagram_app/objects/post_home.dart';
 
 class PostItem extends StatelessWidget {
   final Post post;

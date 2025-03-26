@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -112,7 +114,9 @@ class _PostScreenState extends State<PostScreen> {
               padding: const EdgeInsets.only(bottom: 12),
               child: RoundedButton(
                   label: 'Share',
-                  onPressed: () {},
+                  onPressed: () {
+                    print(Image.asset(widget.file.absolute.path));
+                  },
                   bgColor: RQColor.metaBlue,
                   textColor: RQColor.metaWhite,
                   fontSize: RQFont.fs14,

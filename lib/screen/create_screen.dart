@@ -164,6 +164,7 @@ class _CreateScreenState extends State<CreateScreen> {
               ),
               GridView.builder(
                   shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: _mediaList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,

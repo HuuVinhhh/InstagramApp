@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:instagram_app/common/color_resource.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,7 +22,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _passwordConfirmController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final _media = MediaQuery.sizeOf(context);
+    final media = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: RQColor.metaWhite,
       body: SafeArea(
@@ -121,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: _media.width / 3,
+                      width: media.width / 3,
                       height: 1,
                       child: Container(
                         decoration: BoxDecoration(color: RQColor.metaBlack20),
@@ -135,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           fontWeight: RQFont.fw500),
                     ),
                     SizedBox(
-                      width: _media.width / 3,
+                      width: media.width / 3,
                       height: 1,
                       child: Container(
                         decoration: BoxDecoration(color: RQColor.metaBlack20),
@@ -165,7 +167,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     LinkButton(
                         label: 'Log in',
                         onPressed: () {
-                          Navigator.pushNamed(context, '/');
+                          Navigator.pushNamed(context, '/login');
                         },
                         textColor: RQColor.metaBlue,
                         fontSize: RQFont.fs13,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_app/common/color_resource.dart';
 import 'package:instagram_app/common/font_resoure.dart';
+import 'package:instagram_app/components/buttons/reaction_button.dart';
 
 class PostBottom extends StatelessWidget {
   final String username;
@@ -11,7 +12,7 @@ class PostBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 375,
+      width: double.maxFinite,
       color: RQColor.metaWhite,
       child: Column(
         children: [
@@ -22,8 +23,8 @@ class PostBottom extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.only(left: 14),
-                child: SvgPicture.asset(
-                  'assets/icons/reactions/like.svg',
+                child: const ReactionButton(
+                  iconPath: 'assets/icons/reactions/like.svg',
                   width: 24,
                   height: 24,
                 ),
@@ -46,13 +47,12 @@ class PostBottom extends StatelessWidget {
               ),
               const Spacer(),
               Container(
-                margin: const EdgeInsets.only(right: 14),
-                child: SvgPicture.asset(
-                  'assets/icons/reactions/save.svg',
-                  width: 24,
-                  height: 24,
-                ),
-              )
+                  margin: const EdgeInsets.only(right: 14),
+                  child: const ReactionButton(
+                    iconPath: 'assets/icons/reactions/save.svg',
+                    width: 24,
+                    height: 24,
+                  ))
             ],
           ),
           const SizedBox(

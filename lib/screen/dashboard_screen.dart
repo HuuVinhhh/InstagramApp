@@ -20,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _media = MediaQuery.sizeOf(context);
+    final media = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: RQColor.metaWhite,
       body: Stack(
@@ -37,7 +37,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     alignment: Alignment.center,
                     children: [
                       Container(
-                        width: _media.width,
+                        width: media.width,
                         height: 50,
                         color: RQColor.metaGrey,
                       ),

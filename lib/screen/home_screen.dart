@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_app/common/color_resource.dart';
 import 'package:instagram_app/components/posts/post_item.dart';
-import 'package:instagram_app/objects/post.dart';
+import 'package:instagram_app/components/stories/normal_story.dart';
+import 'package:instagram_app/data/ergou_data.dart';
+import 'package:instagram_app/objects/post_home.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,32 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Post> posts = [
-    Post(
-        username: 'anhnq.204',
-        caption: 'hongkong by night',
-        location: 'Hongkong',
-        imageURL: 'assets/images/posts/hongkong.jpg',
-        avatarURL: 'assets/images/avatars/anhnq204.jpg'),
-    Post(
-        username: 'xxxibgdrgn',
-        caption: 'vogue korea',
-        location: 'Seoul, Korea',
-        imageURL: 'assets/images/posts/gd.jpg',
-        avatarURL: 'assets/images/avatars/xxxibgdrgn.jpg'),
-    Post(
-        username: 'justinbieber',
-        caption: 'golfffff',
-        location: 'Hawaii, US',
-        imageURL: 'assets/images/posts/justinbieber.jpg',
-        avatarURL: 'assets/images/avatars/justinbieber.jpg'),
-    Post(
-        username: 'yifei_cc',
-        caption: 'sweetieee',
-        location: 'Beijing, China',
-        imageURL: 'assets/images/posts/yifei.jpg',
-        avatarURL: 'assets/images/avatars/yifei_cc.jpg'),
-  ];
+  List<Post> posts = ErgouData.HOME_POSTS;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,20 +40,30 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 12),
-              child: SvgPicture.asset(
-                'assets/icons/appbar/like.svg',
-                width: 24,
-                height: 24,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/notifications');
+              },
+              child: Container(
+                margin: const EdgeInsets.only(right: 12),
+                child: SvgPicture.asset(
+                  'assets/icons/appbar/like.svg',
+                  width: 24,
+                  height: 24,
+                ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(right: 12),
-              child: SvgPicture.asset(
-                'assets/icons/appbar/share.svg',
-                width: 24,
-                height: 24,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/messages');
+              },
+              child: Container(
+                margin: const EdgeInsets.only(right: 12),
+                child: SvgPicture.asset(
+                  'assets/icons/appbar/share.svg',
+                  width: 24,
+                  height: 24,
+                ),
               ),
             )
           ],
@@ -86,10 +73,33 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 50),
               child: Column(
-                children: List.generate(
-                  4,
-                  (index) => PostItem(post: posts[index]),
-                ),
+                children: [
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                    decoration: BoxDecoration(
+                        border: Border.symmetric(
+                            horizontal:
+                                BorderSide(color: RQColor.metaGrey, width: 1))),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(ErgouData.STORY_POSTS.length,
+                            (index) {
+                          return NormalStory(
+                              post: ErgouData.STORY_POSTS[index]);
+                        }),
+                      ),
+                    ),
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: ErgouData.HOME_POSTS.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return PostItem(post: ErgouData.HOME_POSTS[index]);
+                      })
+                ],
               ),
             ),
           ),
